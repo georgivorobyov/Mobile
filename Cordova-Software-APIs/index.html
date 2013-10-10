@@ -34,8 +34,18 @@ under the License.-->
         <script src="js/libs/jquery-1.10.2.js"></script>
         <script src="js/libs/kendo.all.min.js"></script>
         <script src="js/app/notifications.js"></script>
+        <script src="js/app/camera.js"></script>
         <script src="js/app/device.js"></script>
         <script src="js/app/connection.js"></script>
+        <script src="js/app/events.js"></script>
+        <script src="js/app/fileHelper.js"></script>
+        <script src="js/app/file.js"></script>
+        <script src="js/app/browser.js"></script>
+        <script src="js/app/globalization.js"></script>
+        <script src="js/app/media.js"></script>
+        <script src="js/app/sqlLite.js"></script>
+        <script src="js/app/carRepository.js"></script>
+        <script src="js/app/storage.js"></script>
         <script src="js/index.js"></script>
         <title>Hello World</title>
     </head>
@@ -100,7 +110,7 @@ under the License.-->
             </ul>
         </div>
         <div id="device-view" data-id="device-view" data-role="view" data-layout="api-layout" data-title="Device API"
-                data-show="app.deviceInfo.init">
+             data-show="app.deviceInfo.init">
             <table>
                 <tr>
                     <td>
@@ -118,7 +128,7 @@ under the License.-->
                         <strong data-align="left" data-bind="text: cordova"></strong>
                     </td>
                 </tr>
-                <tr> 
+                <tr>
                     <td>
                         <span data-align="right">Platform:</span>
                     </td>
@@ -145,28 +155,46 @@ under the License.-->
             </table>
         </div>
         <div id="capture-view" data-id="capture-view" data-role="view" data-layout="api-layout" data-title="Capture API">
+            <ul class="listview">
+                <li>
+                    <a data-role="touch" class="button" data-tap="app.cameraApi.capturePhoto">Capture Photo</a>
+                </li>
+            </ul>
         </div>
         <div id="connection-view" data-id="connection-view" data-role="view" data-layout="api-layout" data-title="Connection API"
-            data-show="app.connectionApi.init" data-hide="app.connectionApi.close">
+             data-show="app.connectionApi.init" data-hide="app.connectionApi.close">
             <h1 data-bind="text: state"></h1>
         </div>
         <div id="contacts-view" data-id="contacts-view" data-role="view" data-layout="api-layout" data-title="Contacts API"
-            data-show="app.contactsApi.init">
+             data-show="app.contactsApi.init">
             <input type="text" data-bind="value:name"/>
             <input type="text" data-bind="value:number"/>
             <a data-role="touch" data-tap="app.contactsApi.create">Create</a>
         </div>
         <div id="events-view" data-id="events-view" data-role="view" data-layout="api-layout" data-title="Events API">
+            The app will pop up a message when the battery level is low.         
         </div>
-        <div id="file-system-view" data-id="file-system-view" data-role="view" data-layout="api-layout" data-title="File system API">
+        <div id="file-system-view" data-id="file-system-view" data-role="view" data-layout="api-layout" data-title="File system API"
+            data-model="app.fileApi">
+            <input class="inputBox" data-bind="value: fileName" placeholder="File name" />
+            <input class="inputBox" data-bind="value: text" placeholder="Text" />
+            <a data-role="button" data-bind="click: readText">Read</a>
+            <a data-role="button" data-bind="click: writeText">Save</a>
+            <a data-role="button" data-bind="click: deleteFile">Delete</a>
         </div>
-        <div id="globalization-view" data-id="globalization-view" data-role="view" data-layout="api-layout" data-title="Globalization API">
+        <div data-model="app.globalizationApi" id="globalization-view" data-id="globalization-view" data-role="view" data-layout="api-layout" data-title="Globalization API">
+            <span data-bind="visible: visible">Language: </span>
+            <span data-bind="text: language"></span>
+            <a data-role="button" data-bind="click: load">Load Language</a>
         </div>
         <div id="InAppBrowser-view" data-id="InAppBrowser-view" data-role="view" data-layout="api-layout" data-title="InAppBrowser API">
+            <a data-role="button" data-click="app.browserApi.openIcenium">Open Icenium site</a>
         </div>
-        <div id="media-view" data-id="media-view" data-role="view" data-layout="api-layout" data-title="Media API">
+        <div id="media-view" data-show="app.mediaApi.start" data-hide="app.mediaApi.stop" data-id="media-view" data-role="view" data-layout="api-layout" data-title="Media API">
+            Turn your speakers on.        
         </div>
         <div id="storage-view" data-id="storage-view" data-role="view" data-layout="api-layout" data-title="Storage API">
+            <a data-role="button" data-click="app.storageApi.open">Open</a>
         </div>
 
         <div id="home-layout" data-id="home-layout" data-role="layout">
