@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <link href="styles/kendo/kendo.mobile.all.min.css" rel="stylesheet" />
+        <link href="styles/main.css" rel="stylesheet" />
+
+        <script src="cordova.js"></script>
+        <script src="scripts/libs/jquery.min.js"></script>
+        <script src="scripts/libs/kendo.mobile.min.js"></script>
+        <script src="scripts/libs/sqlLite.js"></script>
+        
+        <script src="scripts/app/carRepository.js"></script>
+        <script src="scripts/app/home.js"></script>
+        <script src="scripts/app/app.js"></script>
+
+    </head>
+    <body>
+        <!--Home-->
+        <div id="home" 
+             data-role="view"  
+             data-title="Unknown Rent-A-Car"
+             data-transition="slide"
+             data-model="app.home.viewModel"
+             data-show="app.home.viewModel.show"
+             data-hide="app.home.viewModel.hide"
+             data-layout="main-layout">
+            
+            <ul id="cars" data-click="clickedItem" data-role="listview" data-bind="source: cars" data-style="inset" data-template="car-template"></ul>
+        </div>
+        
+        <script type="text/x-kendo-tmpl"  id="car-template">
+            <div
+            style="background: #= available[0] == "t"?"green":"red"#">
+            #if (available[0] != "t") {#
+                <h5>Rented till: #= returnDate.substr(0, 15)#</h5>
+            #}#
+                <h5>#= model #</h5>
+                <h5>#= vendor #</h5>
+            </div>
+        </script>
+        <!--Layout-->
+        <div data-role="layout" data-id="main-layout">
+
+            <!--Header-->
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div data-role="footer">
+                <div data-role="tabstrip">
+                    <a href="#home" data-icon="home">Home</a>
+                    <a href="views\about.html#about" data-icon="about">About</a>
+                    <a href="views\contact.html#contact" data-icon="contacts">Contact</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
