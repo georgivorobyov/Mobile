@@ -1,0 +1,15 @@
+<div id="thought" 
+     data-role="view"  
+     data-title="Thought"
+     data-transition="slide"
+     data-show="app.thought.viewModel.open"
+     data-model="app.thought.viewModel"
+     data-layout="main-layout"
+     data-bind="attr: { 'data-title': title}">
+    
+    <div class="view-content">
+        <h1 data-bind="text: title"></h1>
+        <img data-bind="attr: { src: imageUrl}" width="250" />
+    </div>
+
+</div>

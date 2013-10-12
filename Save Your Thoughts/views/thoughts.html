@@ -1,0 +1,20 @@
+<div id="thoughts" 
+     data-role="view"  
+     data-title="Thoughts"
+     data-transition="slide"
+     data-model="app.thoughts.viewModel"
+     data-show="app.thoughts.viewModel.show"
+     data-layout="main-layout">
+    
+    <div class="view-content">
+         <ul id="thoughts"
+             data-role="listview"
+             data-bind="source: thoughts"
+             data-style="inset"
+             data-template="thought-template"></ul>
+    </div>
+
+    <script type="text/x-kendo-tmpl" id="thought-template">
+        <a data-role="listview-link" href="views/thought.html\#thought?title=${Title}&imageUrl=${ImageUrl}">${Title}</a>
+    </script>
+</div>

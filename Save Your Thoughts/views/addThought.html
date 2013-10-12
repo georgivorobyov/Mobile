@@ -1,0 +1,51 @@
+<div id="addThought" 
+     data-role="view"  
+     data-title="Add a Thought"
+     data-transition="slide"
+     data-model="app.addThought.viewModel"
+     data-layout="main-layout">
+
+    <div class="view-content">
+        <ul id="button-group" 
+            data-role="buttongroup" 
+            data-index="0" 
+            data-select="selectButton">
+            
+            <li>Text</li>
+            <li>Camera</li>
+            <li>Audio</li>
+        </ul>
+        
+        <div id="text-panel" class="panel">
+            <input data-bind="value: title" placeholder="Title" class="titleTextPanel" />
+            <textarea data-bind="text: content" class="contentTextPanel"></textarea>
+        </div>
+        
+        <div id="photo-panel" class="hidden panel">
+            <div data-bind="{events: {click: capture}}">
+                <img data-bind="attr: { src: imageUrl}" width="250" />
+                <a data-role="button" data-bind="click: capture" class="captureButton">Express your thought in a photo?</a>
+            </div>
+        </div>
+        
+        <a data-role="button" data-bind="click: save" class="addThoughtButton">Add</a>
+    </div>
+    
+    <script>
+        function selectButton() {
+            var index = this.current().index();
+            $("#text-panel").hide();
+            $("#photo-panel").hide();
+            switch (index) {
+                case 0:
+                    $("#text-panel").show();
+                    break;
+                case 1:
+                    $("#photo-panel").show();
+                    break;
+                case 2:
+                    break;
+            }
+        }
+    </script>
+</div>
