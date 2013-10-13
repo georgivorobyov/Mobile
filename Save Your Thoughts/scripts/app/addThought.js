@@ -139,6 +139,7 @@
             viewModel.set("_savedSteps", 0);
             viewModel.set("_stepsForSave", 0);
             viewModel.set("_mediaFile", null);
+            viewModel.set("isAdded", false);
         },
         
         _onError: function (error) {

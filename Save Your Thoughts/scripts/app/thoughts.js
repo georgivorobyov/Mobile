@@ -21,7 +21,7 @@
             .get()
             .then(function(data){
                 app.application.hideLoading();
-                //viewModel.set("thoughts", []);
+                viewModel.set("thoughts", []);
                 var i = 0;
                 
                 function loadNext () {
