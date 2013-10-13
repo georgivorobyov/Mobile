@@ -21,11 +21,28 @@
             .get()
             .then(function(data){
                 app.application.hideLoading();
-                viewModel.set("thoughts", data.result);
+                for (var i = 0; i < data.result.length; i++) {
+                    var thought = data.result[i];
+                    var coordinations = thought.Coordinations;
+                    var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='
+                        + coordinations.latitude 
+                        + ','
+                        + coordinations.longitude + '&sensor=false';
+                    httpRequest.getJSON(url)
+                    .then(function (locationInformation) {
+                         viewModel.thoughts.push({
+                             imageUrl: thought.ImageUrl,
+                             title: thought.Title,
+                             content: thought.Content,
+                             location: locationInformation.results[0].formatted_address,
+                             captureUrl: thought.CaptureUrl
+                         });
+                    });
+                }
             },
             function(error){
                 app.application.hideLoading();
-                alert(JSON.stringify(error));
+                navigator.notification.alert("Our servers are very busy right now, please try again later.", null, "Connection error");
             });
         },
     });

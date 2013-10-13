@@ -15,6 +15,10 @@
     </div>
 
     <script type="text/x-kendo-tmpl" id="thought-template">
-        <a data-role="listview-link" href="views/thought.html\#thought?title=${Title}&imageUrl=${ImageUrl}">${Title}</a>
+        <a data-role="listview-link" 
+           href="views/thought.html\#thought?title=${title}&imageUrl=${imageUrl}&content=${content}&location=${location}&captureUrl=${captureUrl}">
+            <h2 class="thoughtListTitle">${title}</h2>
+            <h3 class="thoughtListLocation">Published in: ${location}</h3>
+        </a>
     </script>
 </div>

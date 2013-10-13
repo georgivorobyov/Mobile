@@ -5,7 +5,116 @@ body, html
     width: 100%;
 }
 
+/* Thought styles */
+.thoughtTitle
+{
+    word-break: break-all;
+    padding: 10px;
+}
+
+.thought.panel
+{
+    padding: 0;
+    height: auto;
+}
+
+.thought.contentTextPanel
+{
+    height: auto;
+}
+
+img.thought {
+    margin-left: 20px;
+}
+
+/* Thoughts styles */
+.thoughtListTitle
+{
+    text-overflow: ellipsis;
+    width: 90%;
+    overflow: hidden;
+    margin: 10px 10px 0 10px;
+}
+
+.thoughtListLocation
+{
+    text-overflow: ellipsis;
+    width: 90%;
+    overflow: hidden;
+    font-size: 10px !important;
+    margin: 10px;
+}
+
+/* Home styles */
+.homeWrapper
+{
+    position: relative;
+}
+
+.homeText
+{
+    position: absolute;
+    top: 200px;
+    text-align: center;
+}
+
+.headerText
+{
+    position: absolute;
+    width: 100px;
+    top: 45px;
+    margin-bottom: 15px;
+    left: 20px;
+}
+
+.logo
+{
+    position: absolute;
+    right: 17%;
+    top: 70px;
+    width: 85px;
+}
+
 /* Add Thought styles */
+.addPhotoHolder
+{
+    width: 100%;
+    height: 100%;
+}
+
+.addPhotoButtonPanel
+{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-style: dashed;
+    border-width: 2px;
+    position: relative;
+}
+.addPhotoButtonPanel:active 
+{
+    opacity: 0.5;
+}
+
+.addPhotoButtonPlus
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 70px;
+    margin-top: -56px;
+    margin-left: -20px;
+}
+
+.addPhotoButtonText
+{
+    position: absolute;
+    top: 150px;
+    text-align: center;
+    left: 20px;
+    width: 240px;
+}
+
 .panel
 {
     padding: 20px;

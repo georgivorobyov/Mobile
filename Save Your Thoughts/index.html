@@ -12,7 +12,9 @@
         <script src="scripts/libs/kendo.mobile.min.js"></script>
         <script src="scripts/libs/sqlLite.js"></script>
         
-        <script src="scripts/app/carRepository.js"></script>
+        <script src="scripts/app/httpRequest.js"></script>
+        <script src="scripts/app/connection.js"></script>
+        <script src="scripts/app/cordova.js"></script>
         <script src="scripts/app/addThought.js"></script>
         <script src="scripts/app/thoughts.js"></script>
         <script src="scripts/app/thought.js"></script>
@@ -24,25 +26,19 @@
         <!--Home-->
         <div id="home" 
              data-role="view"  
-             data-title="Unknown Rent-A-Car"
+             data-title="Home"
              data-transition="slide"
-             data-model="app.home.viewModel"
-             data-show="app.home.viewModel.show"
-             data-hide="app.home.viewModel.hide"
              data-layout="main-layout">
-            <h1>Save your thoughts</h1>
-            <h4>via</h4>
-            <ul data-role="listview" data-style="inset">
-                <li>
-                    <a href="">Camera</a>
-                </li>
-                <li>
-                    <a href="">Audio</a>
-                </li>
-                <li>
-                    <a href="">Words</a>
-                </li>
-            </ul>
+            <div class="homeWrapper">
+                <h1 class="headerText">
+                    Share your thoughts
+                </h1>
+                <img class="logo"
+                     src="styles/images/thought.png" width="100" />
+                <p class="homeText">
+                    Share your thoughts and ideas to the world to be heard.
+                </p>
+            </div>
         </div>
 
         <!--Layout-->
@@ -62,7 +58,6 @@
                     <a href="views\addThought.html#addThought" data-icon="add">Add</a>
                     <a href="views\thoughts.html#thoughts" data-icon="organize">Thoughts</a>
                     <a href="views\about.html#about" data-icon="about">About</a>
-                    <a href="views\contact.html#contact" data-icon="contacts">Contact</a>
                 </div>
             </div>
         </div>

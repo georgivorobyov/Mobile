@@ -3,13 +3,36 @@
      data-title="Thought"
      data-transition="slide"
      data-show="app.thought.viewModel.open"
+     data-hide="app.thought.viewModel.clean"
      data-model="app.thought.viewModel"
-     data-layout="main-layout"
-     data-bind="attr: { 'data-title': title}">
-    
+     data-layout="main-layout">
+
     <div class="view-content">
-        <h1 data-bind="text: title"></h1>
-        <img data-bind="attr: { src: imageUrl}" width="250" />
+        <ul id="button-group" 
+            data-role="buttongroup" 
+            data-index="0"
+            data-select="app.thought.codeBehind.selectButton">
+            
+            <li>Text</li>
+            <li>Camera</li>
+            <li>Audio</li>
+        </ul>
+        
+        <h1 data-bind="text: title" class="thoughtTitle"></h1>
+        
+        <div class="text-panel panel thought">
+            <p data-bind="text: content" class="thought contentTextPanel"></p>
+        </div>
+
+        <div class="photo-panel hidden panel thought">
+            <img data-bind="attr: { src: imageUrl}" width="280" class="thought"/>
+        </div>
+        
+        <div class="audio-panel hidden panel">
+            <span data-bind="invisible: hasMedia">The thought doesn't contain media.</span>
+            <a data-role="button" data-bind="click: play, visible: hasMedia">Play</a>
+            <a data-role="button" data-bind="click: stop, visible: hasMedia">Stop</a>
+        </div>
     </div>
 
 </div>
