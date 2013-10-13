@@ -12,6 +12,11 @@
         _position: {},
         _savedSteps: 0,
         _stepsForSave: 0,
+        _mediaFile: null,
+        
+        show: function () {
+            viewModel._clear();
+        },
         
         capture: function () {
             var that = this;
@@ -29,6 +34,14 @@
             });
         },
         
+        captureAudio: function () {
+            app.cordova.captureAudio().then(function (mediaFiles) {
+                viewModel._mediaFile = mediaFiles[0];
+            }, function () {
+                navigator.notification.alert("An error occurred while making the record.", null, "Media error");
+            });
+        },
+        
         save: function () {
             var that = this;
             
@@ -42,6 +55,22 @@
                 app.application.showLoading();
                 that.getLocation();
                 that._savePicture();
+                that._saveMedia();
+            }
+        },
+        
+        _saveMedia: function () {
+            if (this._mediaFile != null) {
+                var mediaFile = this._mediaFile;
+                var ft = new FileTransfer(),
+                name = mediaFile.name;
+
+                viewModel._stepsForSave += 1;
+                ft.upload(mediaFile.fullPath, Everlive.$.Files.getUploadUrl(),
+                function(result) {
+                    viewModel._isSaved();
+                }, this._onError,
+                { fileName: name });
             }
         },
         
@@ -109,6 +138,7 @@
             viewModel.set("_position", {});
             viewModel.set("_savedSteps", 0);
             viewModel.set("_stepsForSave", 0);
+            viewModel.set("_mediaFile", null);
         },
         
         _onError: function (error) {

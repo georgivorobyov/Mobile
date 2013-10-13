@@ -21,7 +21,10 @@
             .get()
             .then(function(data){
                 app.application.hideLoading();
-                for (var i = 0; i < data.result.length; i++) {
+                //viewModel.set("thoughts", []);
+                var i = 0;
+                
+                function loadNext () {
                     var thought = data.result[i];
                     var coordinations = thought.Coordinations;
                     var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='
@@ -29,16 +32,20 @@
                         + ','
                         + coordinations.longitude + '&sensor=false';
                     httpRequest.getJSON(url)
-                    .then(function (locationInformation) {
-                         viewModel.thoughts.push({
-                             imageUrl: thought.ImageUrl,
-                             title: thought.Title,
-                             content: thought.Content,
-                             location: locationInformation.results[0].formatted_address,
-                             captureUrl: thought.CaptureUrl
-                         });
-                    });
+                        .then(function (locationInformation) {
+                             var thought = data.result[i];
+                             viewModel.thoughts.push({
+                                 imageUrl: thought.ImageUrl,
+                                 title: thought.Title,
+                                 content: thought.Content,
+                                 location: locationInformation.results[0].formatted_address,
+                                 captureUrl: thought.CaptureUrl
+                             });
+                            i++;
+                            loadNext();
+                        });
                 }
+                loadNext();
             },
             function(error){
                 app.application.hideLoading();

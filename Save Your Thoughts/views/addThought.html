@@ -2,6 +2,7 @@
      data-role="view"  
      data-title="Add a Thought"
      data-transition="slide"
+     data-show="app.addThought.viewModel.show"
      data-model="app.addThought.viewModel"
      data-layout="main-layout">
 
@@ -32,7 +33,7 @@
         </div>
         
         <div class="audio-panel hidden panel">
-            
+            <a data-role="button" data-bind="click: captureAudio">Record your thought out loud</a>
         </div>
         
         <a data-role="button" data-bind="click: save" class="addThoughtButton">Add</a>
